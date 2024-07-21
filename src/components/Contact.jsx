@@ -15,15 +15,17 @@ const Contact=()=> {
             whileInView={{opacity:1,x:0}}
             initial={{opacity:1,x:-100}}
             transition={{duration:1}}
-            className="my-4">767 Fifth Avenue, New York, NY 10153</motion.p>
+            className="my-4"><a href="#" className="my-4 border-b ">www.linkedin.com/in/umesha-godawela22</a></motion.p>
 
             <motion.p 
             whileInView={{opacity:1,x:0}}
             initial={{opacity:1,x:100}}
             transition={{duration:1}}
-            className="my-4">+12 4555 666 00</motion.p>
+            className="my-4">+94 707445923
+
+            </motion.p>
             
-            <a href="#" className="my-4 border-b ">me@example.com</a>
+            <a href="#" className="my-4 border-b ">umeshagodawela@gmail.com</a>
   
         </div>
     </div>
