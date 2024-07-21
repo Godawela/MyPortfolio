@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import profilePic from "/src/assets/profile.jpg";
+=======
+import profilePic from "https://github.com/Godawela/MyPortfolio/blob/main/src/assets/profile.jpg";
+>>>>>>> 53c863d4a63644c57c966eebcec06eaebf2613eb
 import { motion } from "framer-motion";
 
 const container =(delay)=>({
