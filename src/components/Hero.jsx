@@ -20,6 +20,7 @@ const Hero = () => {
                     animate="visible"
                     className="pb-16 text-6xl font-thin tracking-tight">Umesha Godawela
                     </motion.h1>
+                    
                     <motion.span 
                     variants={container(0.5)}
                     initial="hidden"

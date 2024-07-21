@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 
+
 const Contact=()=> {
   return (
     <div className="border-b border-neutral-800 pb-20">
@@ -15,7 +16,7 @@ const Contact=()=> {
             whileInView={{opacity:1,x:0}}
             initial={{opacity:1,x:-100}}
             transition={{duration:1}}
-            className="my-4"><a href="#" className="my-4 border-b ">www.linkedin.com/in/umesha-godawela22</a></motion.p>
+            className="my-4"><a href="www.linkedin.com/in/umesha-godawela22" className="my-4 border-b ">LinkedIn Profile</a></motion.p>
 
             <motion.p 
             whileInView={{opacity:1,x:0}}
@@ -25,7 +26,7 @@ const Contact=()=> {
 
             </motion.p>
             
-            <a href="#" className="my-4 border-b ">umeshagodawela@gmail.com</a>
+            <a href="umeshagodawela@gmail.com" className="my-4 border-b ">Mail To Me</a>
   
         </div>
     </div>
