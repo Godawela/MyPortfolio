@@ -50,11 +50,10 @@ const Hero = () => {
                 src={profilePic} alt="profile pic" 
                 width={400}
                 height={400}
-<<<<<<< HEAD
+
                 />
-=======
-                    />
->>>>>>> de9d036883c96f8b00db97c37a4dcdcf72b17710
+
+                   
                 </div>
                 </div>
         </div>
