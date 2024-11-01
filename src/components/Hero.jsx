@@ -17,17 +17,17 @@ const Hero = () => {
                         initial={{ scale: 0.9, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-                        className="relative p-2 rounded-full shadow-lg border border-gray-300 overflow-hidden"
+                        className="relative p-1.5 rounded-full shadow-lg border border-gray-300 overflow-hidden"
                         style={{
-                            background: "linear-gradient(135deg, #e0e0e0, #f8f8f8)",
+                            background: "linear-gradient(135deg, #60a5fa, #3b82f6)", // Blue gradient for the border
                         }}
                     >
                         <motion.img
                             src={profilePic}
                             alt="profile pic"
-                            width={160} // Reduced size for a more refined look
+                            width={160} // Reduced size for a refined look
                             height={160}
-                            className="rounded-full"
+                            className="rounded-full bg-white p-1"
                             whileHover={{ scale: 1.08 }}
                             style={{
                                 boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
