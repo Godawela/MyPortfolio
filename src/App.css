@@ -38,3 +38,27 @@ body {
   }
 }
 
+/* App.css */
+
+.comet {
+    position: absolute;
+    width: 20px; /* Width of the comet */
+    height: 5px; /* Height of the comet */
+    background: linear-gradient(to right, #ffeb3b, #ff5722); /* Gradient color for the comet */
+    border-radius: 50%; /* Rounded ends */
+    opacity: 0.9; /* Opacity of the comet */
+    transform: translateX(-50%);
+    animation: fly 3s linear forwards;
+}
+
+/* Keyframes for comet animation */
+@keyframes fly {
+    0% {
+        transform: translate(-50%, -50%) translateY(0) translateX(-100vw);
+        opacity: 1; /* Fully visible at start */
+    }
+    100% {
+        transform: translate(-50%, -50%) translateY(50px) translateX(100vw); /* Move down and across */
+        opacity: 0; /* Fade out at the end */
+    }
+}
