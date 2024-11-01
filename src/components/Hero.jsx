@@ -2,13 +2,13 @@ import profilePic from "/src/assets/profile.jpg";
 import { motion } from "framer-motion";
 
 const container = (delay) => ({
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { duration: 0.6, delay: delay, ease: "easeOut" } },
+    hidden: { x: -100, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.5, delay: delay } },
 });
 
 const Hero = () => {
     return (
-        <div className="border-b border-neutral-900 pb-4 lg:mb-35 bg-gray-100">
+        <div className="border-b border-neutral-900 pb-4 lg:mb-35">
             <div className="flex flex-wrap lg:flex-nowrap items-center space-y-6 lg:space-y-0">
                 
                 {/* Profile Image Section */}
@@ -17,16 +17,16 @@ const Hero = () => {
                         initial={{ scale: 0.9, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-                        className="relative p-2 rounded-full shadow-lg border border-gray-200 overflow-hidden"
+                        className="relative p-2 rounded-full shadow-lg border border-gray-300 overflow-hidden"
                         style={{
-                            background: "linear-gradient(135deg, #e0e0e0, #f8f8f8)", 
+                            background: "linear-gradient(135deg, #e0e0e0, #f8f8f8)",
                         }}
                     >
                         <motion.img
                             src={profilePic}
                             alt="profile pic"
-                            width={200}
-                            height={200}
+                            width={160} // Reduced size for a more refined look
+                            height={160}
                             className="rounded-full"
                             whileHover={{ scale: 1.08 }}
                             style={{
@@ -44,32 +44,27 @@ const Hero = () => {
                             variants={container(0)}
                             initial="hidden"
                             animate="visible"
-                            className="pb-4 text-6xl font-bold tracking-tight text-neutral-900 leading-tight"
+                            className="pb-16 text-6xl font-thin tracking-tight"
                         >
                             Umesha Godawela
                         </motion.h1>
 
                         <motion.span
-                            variants={container(0.4)}
+                            variants={container(0.5)}
                             initial="hidden"
                             animate="visible"
-                            className="text-3xl font-semibold tracking-tight text-gray-800"
-                            style={{
-                                background: "linear-gradient(90deg, #1a73e8, #4285f4)",
-                                WebkitBackgroundClip: "text",
-                                color: "transparent",
-                            }}
+                            className="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-5xl tracking-tight text-transparent"
                         >
                             Full Stack Developer
                         </motion.span>
 
                         <motion.p
-                            variants={container(0.8)}
+                            variants={container(1)}
                             initial="hidden"
                             animate="visible"
-                            className="mt-6 max-w-2xl text-lg font-light tracking-tight text-gray-700 leading-relaxed"
+                            className="my-2 max-w-xl py-6 font-light tracking-tighter"
                         >
-                            I specialize in creating modern, high-performance web applications that combine aesthetic appeal with solid, scalable functionality. My expertise spans front-end frameworks like React and back-end solutions like Node.js, with a focus on delivering seamless user experiences. Let's build something transformative.
+                            I am a passionate full-stack developer with a knack for crafting robust and scalable web applications. I have honed my skills in front-end technologies like React, as well as back-end technologies like Node.js, and MongoDB. My goal is to leverage my expertise to create innovative solutions that drive business growth and deliver exceptional user experiences.
                         </motion.p>
                     </div>
                 </div>
