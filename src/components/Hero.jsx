@@ -19,7 +19,7 @@ const Hero = () => {
                         transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
                         className="relative p-1.5 rounded-full shadow-lg border border-gray-300 overflow-hidden"
                         style={{
-                            background: "linear-gradient(135deg, #60a5fa, #3b82f6)", // Blue gradient for the border
+                            background: "linear-gradient(135deg, #1e3a8a, #2563eb)", // Blue gradient for the border
                         }}
                     >
                         <motion.img
