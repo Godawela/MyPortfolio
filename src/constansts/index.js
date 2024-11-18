@@ -7,6 +7,9 @@ import project6 from "../assets/projects/project6.png";
 import project7 from "../assets/projects/project7.png";
 import project8 from "../assets/projects/project8.png";
 import project9 from "../assets/projects/project9.png";
+import project10 from "../assets/projects/project10.png";
+import project11 from "../assets/projects/project11.png";
+import project12 from "../assets/projects/project12.png";
 
 export const PROJECTS = [
   {
@@ -72,5 +75,32 @@ export const PROJECTS = [
         "An animated UI design for a product selling website.",
         technologies: ["Figma", "UI/UX Design"],
       },
+
+      {
+        title: "Animated Website Design",
+        image: project12,
+        description:
+      "An animated UI design for a product selling website.",
+      technologies: ["Figma", "UI/UX Design"],
+        },
+    
+      {
+        title: "Coffe Shop App",
+        image: project10,
+        description:
+          "An app for a Coffe shop.",
+          technologies: ["Flutter", "Android Application"],
+        },
+
+        
+      {
+        title: "Medical Device Handler App (Ongoing)",
+        image: project11,
+        description:
+          "An app for medical professional to learn.",
+          technologies: ["Flutter", "NodeJS","SQL Server","Android and iOS Application"],
+        },
+
+      
 ];
 
