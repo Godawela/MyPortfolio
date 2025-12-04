@@ -10,6 +10,12 @@ import project9 from "../assets/projects/project9.png";
 import project10 from "../assets/projects/project10.png";
 import project11 from "../assets/projects/project11.png";
 import project12 from "../assets/projects/project12.png";
+import project13 from "../assets/projects/project13.png";
+import project14 from "../assets/projects/project14.png";
+import project15 from "../assets/projects/project15.png";
+import project16 from "../assets/projects/project16.png";
+import project17 from "../assets/projects/project17.png";
+import project18 from "../assets/projects/project18.png";
 
 export const PROJECTS = [
   {
@@ -83,6 +89,14 @@ export const PROJECTS = [
       "An animated UI design for a product selling website.",
       technologies: ["Figma", "UI/UX Design"],
         },
+
+          {
+        title: "UI/UX Design for a Smoothie website",
+        image: project18,
+        description:
+          "A website showcasing a smoothie brand.",
+        technologies: ["Figma", "UI/UX Design"],
+        },
     
       {
         title: "Coffe Shop App",
@@ -94,7 +108,7 @@ export const PROJECTS = [
 
         
       {
-        title: "Medical Device Handler App",
+        title: "Medical Device Handler and illness detection App",
         image: project11,
         description:
           "An app for medical professional to learn.",
@@ -102,11 +116,45 @@ export const PROJECTS = [
         },
 
          {
-        title: "Medical Device Handler App (Ongoing)",
-        image: project12,
+        title: "Scrolling effect Website",
+        image: project13,
         description:
-          "An app for medical professional to learn.",
-          technologies: ["Flutter", "NodeJS","SQL Server","Android and iOS Application"],
+          "A website showcasing a scrolling effect.",
+          technologies: ["HTML", "CSS", "JavaScript"],
         },
+
+         {
+        title: "Shopping website Design",
+        image: project14,
+        description:
+          "An e-commerce website for online shopping.",
+          technologies: ["React JS", "CSS"],
+        },
+
+         {
+        title: "Solar System Design",
+        image: project15,
+        description:
+          "A website showcasing the solar system.",
+        technologies: ["React.js, and Vite.js", "CSS", "Three JS"],
+      },
+
+         {
+        title: "Earth with moon Design",
+        image: project16,
+        description:
+          "A website showcasing the Earth and its moon.",
+          technologies: ["React.js, and Vite.js", "CSS", "Three JS"],
+        },
+
+         {
+        title: "QR Code Scanner and Generator App",
+        image: project17,
+        description:
+          "An app for scanning and generating QR codes.",
+          technologies: ["Flutter", "CSS", "Android and iOS Application"],
+        },
+
+       
 ];
 
