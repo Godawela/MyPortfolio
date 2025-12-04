@@ -37,7 +37,8 @@ const About = () => {
               I thrive in collaborative environments and enjoy solving complex
               problems to deliver high-quality solutions. Outside of coding, I
               stay active, explore new technologies, and contribute to
-              open-source projects.
+              open-source projects. I have worked as a mobile app developer
+              intern at Nimbus Venture.
             </p>
           </div>
         </motion.div>
