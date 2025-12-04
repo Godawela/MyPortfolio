@@ -90,7 +90,7 @@ body {
   z-index: -1; /* Ensure stars stay behind content */
   pointer-events: none;
   /* subtle galaxy gradient to add depth */
-  background: radial-gradient(ellipse at 30% 20%, rgba(40, 60, 120, 0.12), transparent 25%),
+  background: radial-gradient(ellipse at 30% 20%, rgba(40, 60, 120, 0.12), transparent 30%),
               radial-gradient(ellipse at 70% 80%, rgba(120, 30, 80, 0.06), transparent 30%);
 }
 
