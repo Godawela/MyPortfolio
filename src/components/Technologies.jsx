@@ -4,6 +4,10 @@ import {FaNodeJs} from "react-icons/fa";
 import { BiLogoSpringBoot } from "react-icons/bi";
 import { SiPython } from "react-icons/si";
 import { motion } from "framer-motion";
+import { SiFlutter } from "react-icons/si";
+import { SiThreedotjs } from "react-icons/si";
+
+
 
 const iconVariants = (duration) =>({
     initial:{y:-10},
@@ -75,6 +79,23 @@ const Technologies=()=> {
             className="rounded-2xl border-4 border-neutral-800 p-4">
                 <FaNodeJs className="text-7xl text-green-500"/>                
             </motion.div>
+
+             <motion.div 
+            variants={iconVariants(4)}
+            initial="initial"
+            animate="animate"
+            className="rounded-2xl border-4 border-neutral-800 p-4">
+                <SiThreedotjs className="text-7xl text-green-500"/>                
+            </motion.div>
+
+ <motion.div 
+            variants={iconVariants(4)}
+            initial="initial"
+            animate="animate"
+            className="rounded-2xl border-4 border-neutral-800 p-4">
+                <SiFlutter className="text-7xl text-green-500"/>                
+            </motion.div>
+
             </motion.div>
     </div>
   )
