@@ -39,7 +39,6 @@ const Hero = () => {
 
                 {/* Text Section */}
                 <div className="w-full lg:w-2/3">
-                            <div className="rocket"></div>
 
                     <div className="flex flex-col items-center lg:items-start px-6 lg:px-0">
                         <motion.h1
