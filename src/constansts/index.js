@@ -94,48 +94,16 @@ export const PROJECTS = [
 
         
       {
-        title: "Medical Device Handler App (Ongoing)",
+        title: "Medical Device Handler App",
         image: project11,
         description:
           "An app for medical professional to learn.",
           technologies: ["Flutter", "NodeJS","SQL Server","Android and iOS Application"],
         },
 
-       {
-        title: "Medical Device Handler App (Ongoing)",
-        image: p13,
-        description:
-          "An app for medical professional to learn.",
-          technologies: ["Flutter", "NodeJS","SQL Server","Android and iOS Application"],
-        },
-
          {
         title: "Medical Device Handler App (Ongoing)",
-        image: p14,
-        description:
-          "An app for medical professional to learn.",
-          technologies: ["Flutter", "NodeJS","SQL Server","Android and iOS Application"],
-        },
-
-         {
-        title: "Medical Device Handler App (Ongoing)",
-        image: p15,
-        description:
-          "An app for medical professional to learn.",
-          technologies: ["Flutter", "NodeJS","SQL Server","Android and iOS Application"],
-        },
-
-         {
-        title: "Medical Device Handler App (Ongoing)",
-        image: p16,
-        description:
-          "An app for medical professional to learn.",
-          technologies: ["Flutter", "NodeJS","SQL Server","Android and iOS Application"],
-        },
-
-         {
-        title: "Medical Device Handler App (Ongoing)",
-        image: p17,
+        image: project12,
         description:
           "An app for medical professional to learn.",
           technologies: ["Flutter", "NodeJS","SQL Server","Android and iOS Application"],
