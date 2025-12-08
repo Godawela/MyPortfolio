@@ -73,7 +73,7 @@ const Technologies=()=> {
             </motion.div>
 
             <motion.div 
-            variants={iconVariants(4)}
+            variants={iconVariants(2)}
             initial="initial"
             animate="animate"
             className="rounded-2xl border-4 border-neutral-800 p-4">
@@ -89,7 +89,7 @@ const Technologies=()=> {
             </motion.div>
 
  <motion.div 
-            variants={iconVariants(4)}
+            variants={iconVariants(1)}
             initial="initial"
             animate="animate"
             className="rounded-2xl border-4 border-neutral-800 p-4">
