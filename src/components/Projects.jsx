@@ -74,12 +74,14 @@ const Projects = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            onClick={() => setSelectedProject(null)} // Close when clicking background
           >
             <motion.div
-              className="bg-neutral-900 p-6 rounded-lg max-w-lg w-full relative"
+              className="bg-neutral-900 p-6 rounded-lg max-w-lg w-full relative max-h-[80vh] overflow-y-auto"
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
+              onClick={(e) => e.stopPropagation()} // Prevent background click from closing when clicking inside modal
             >
               <button
                 className="absolute top-2 right-2 text-white text-xl font-bold"
