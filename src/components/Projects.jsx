@@ -112,8 +112,17 @@ const Projects = () => {
                 </div>
               </div>
 
-              {/* GitHub Link */}
-              {selectedProject.github && (
+              {/* Dynamic Link */}
+              {selectedProject.github && selectedProject.technologies.includes("Figma") ? (
+                <a
+                  href={selectedProject.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
+                >
+                  View on Figma
+                </a>
+              ) : selectedProject.github ? (
                 <a
                   href={selectedProject.github}
                   target="_blank"
@@ -122,7 +131,7 @@ const Projects = () => {
                 >
                   View on GitHub
                 </a>
-              )}
+              ) : null}
             </motion.div>
           </motion.div>
         )}
