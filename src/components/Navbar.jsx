@@ -1,8 +1,6 @@
 import logo from "../assets/image.png";
-import {FaLinkedin} from "react-icons/fa";
-import {FaGithub} from "react-icons/fa";
-import {FaSquareXTwitter} from "react-icons/fa6";
-import {FaInstagram} from "react-icons/fa";
+
+
 
 const Navbar = () => {
   return (
@@ -12,10 +10,11 @@ const Navbar = () => {
         </div>
 
         <div className="m-8 flex items-center justify-center gap-4 teaxt-2xl">
-        <a href="https://www.linkedin.com/in/umesha-godawela22" target="_blank"><FaLinkedin /></a>
-        <a href="https://github.com/Godawela" target="_blank" ><FaGithub /></a>
-            <FaSquareXTwitter />
-            <FaInstagram />
+     
+             <a href="#about" className="hover:text-blue-500 transition-colors">About</a>
+        <a href="#technologies" className="hover:text-blue-500 transition-colors">Technologies</a>
+        <a href="#projects" className="hover:text-blue-500 transition-colors">Projects</a>
+        <a href="#contact" className="hover:text-blue-500 transition-colors">Get in Touch</a>
         </div>
     </nav>
   )
