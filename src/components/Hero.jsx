@@ -63,7 +63,7 @@ const Hero = () => {
                             variants={container(1)}
                             initial="hidden"
                             animate="visible"
-                            className="my-2 max-w-xl py-6 font-light tracking-tighter"
+                            className="my-2 max-w-xl py-6 "
                         >
                             I am a passionate full-stack and mobile developer with a knack for crafting robust and scalable web and mobile applications. I have honed my skills in front-end technologies like React, Flutter, as well as back-end technologies like Node.js, and MongoDB. My goal is to leverage my expertise to create innovative solutions that drive business growth and deliver exceptional user experiences.
                         </motion.p>
