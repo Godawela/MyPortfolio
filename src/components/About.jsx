@@ -26,7 +26,7 @@ const About = () => {
           className="w-full lg:w-1/2"
         >
           <div className="flex justify-center lg:justify-start">
-            <p className="my-2 max-w-xl py-6">
+            <p className="my-2 max-w-xl py-6 ">
               I am a dedicated and versatile full-stack and mobile developer
               with a passion for creating efficient and user-friendly web and
               mobile applications. I have worked with a variety of technologies,

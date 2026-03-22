@@ -76,10 +76,11 @@ export default function App() {
             <div className="container mx-auto px-8">
                 <Navbar />
                 <Hero />
-                <About />
-                <Technologies />
-                <Projects />
-                <Contact />
+                <div id="about"><About /></div>
+<div id="technologies"><Technologies /></div>
+<div id="projects"><Projects /></div>
+<div id="contact"><Contact /></div>
+
             </div>
         </div>
     );
