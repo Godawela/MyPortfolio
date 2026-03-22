@@ -8,7 +8,7 @@ import project7 from "../assets/projects/project7.png";
 import project8 from "../assets/projects/project8.png";
 import project9 from "../assets/projects/project9.png";
 import project10 from "../assets/projects/project10.png";
-import project11 from "../assets/projects/project11.png";
+import project11 from "../assets/projects/project11.jpeg";
 import project12 from "../assets/projects/project12.png";
 import project13 from "../assets/projects/project13.png";
 import project14 from "../assets/projects/project14.png";
@@ -16,6 +16,7 @@ import project15 from "../assets/projects/project15.png";
 import project16 from "../assets/projects/project16.png";
 import project17 from "../assets/projects/project17.png";
 import project18 from "../assets/projects/project18.png";
+import project19 from "../assets/projects/project19.jpeg";
 
 export const PROJECTS = [
   {
@@ -171,6 +172,15 @@ export const PROJECTS = [
           "An app for scanning and generating QR codes.",
           technologies: ["Flutter", "CSS", "Android and iOS Application"],
           github: "https://github.com/Godawela/qrApp"
+        },
+
+         {
+        title: "Parking Assistant App",
+        image: project19,
+        description:
+          "An app for assisting users in finding parking spaces.",
+          technologies: ["Flutter", "CSS", "Android and iOS Application"],
+          github: "https://github.com/Godawela/parking_assistence_app.git"
         },
 
        
