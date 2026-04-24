@@ -1,4 +1,4 @@
-import profilePic from "/src/assets/profile.jpeg";
+import profilePic from "/src/assets/profile.png";
 import { useRef, useEffect } from "react";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 
@@ -12,8 +12,7 @@ const Hero = () => {
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
-    const rotateX = useTransform(y, [-80, 80], [35, -35]);
-    const rotateY = useTransform(x, [-80, 80], [-35, 35]);
+    // Keep glow & shadow effects
     const glowX = useTransform(x, [-80, 80], [-10, 10]);
     const glowY = useTransform(y, [-80, 80], [-10, 10]);
     const shadowX = useTransform(x, [-80, 80], [-20, 20]);
@@ -49,12 +48,6 @@ const Hero = () => {
             animY?.stop();
         };
 
-        const handleMouseMove = (e) => {
-            const rect = el.getBoundingClientRect();
-            x.set(e.clientX - rect.left - rect.width / 2);
-            y.set(e.clientY - rect.top - rect.height / 2);
-        };
-
         const handleMouseLeave = () => {
             animate(x, 0, { duration: 0.4, ease: "easeOut" }).then(() => {
                 animX = animate(x, [0, 80, 80, -80, -80, 0], {
@@ -73,14 +66,12 @@ const Hero = () => {
         };
 
         el.addEventListener("mouseenter", handleMouseEnter);
-        el.addEventListener("mousemove", handleMouseMove);
         el.addEventListener("mouseleave", handleMouseLeave);
 
         return () => {
             animX?.stop();
             animY?.stop();
             el.removeEventListener("mouseenter", handleMouseEnter);
-            el.removeEventListener("mousemove", handleMouseMove);
             el.removeEventListener("mouseleave", handleMouseLeave);
         };
     }, []);
@@ -97,8 +88,6 @@ const Hero = () => {
                         transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
                         ref={ref}
                         style={{
-                            rotateX,
-                            rotateY,
                             transformStyle: "preserve-3d",
                             perspective: 800,
                         }}
@@ -114,14 +103,14 @@ const Hero = () => {
                             <motion.img
                                 src={profilePic}
                                 alt="profile pic"
-                                width={160}
+                                width={240}
                                 height={160}
                                 className="rounded-full bg-white p-1 block"
                                 style={{ boxShadow }}
                             />
                         </div>
 
-                        {/* 3D floating glow layer */}
+                        {/* Floating glow layer */}
                         <motion.div
                             style={{
                                 x: glowX,
