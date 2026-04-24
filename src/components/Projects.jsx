@@ -1,139 +1,209 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PROJECTS } from "../constansts";
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [showLeft, setShowLeft] = useState(false);
+  const [showRight, setShowRight] = useState(true);
+
+  const sliderRef = useRef(null);
+
+  // 🔥 Update arrow visibility
+  const updateArrows = () => {
+    const el = sliderRef.current;
+    if (!el) return;
+
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+
+    setShowLeft(scrollLeft > 10);
+    setShowRight(scrollLeft + clientWidth < scrollWidth - 10);
+  };
+
+  useEffect(() => {
+    updateArrows();
+  }, []);
+
+  // ▶ Scroll buttons
+  const scroll = (dir) => {
+    const el = sliderRef.current;
+    if (!el) return;
+
+    const amount = el.clientWidth * 0.8;
+
+    el.scrollTo({
+      left:
+        dir === "left"
+          ? el.scrollLeft - amount
+          : el.scrollLeft + amount,
+      behavior: "smooth",
+    });
+  };
+
+  // 🖱 Drag support
+  const isDown = useRef(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
+  const onMouseDown = (e) => {
+    isDown.current = true;
+    startX.current = e.pageX - sliderRef.current.offsetLeft;
+    scrollLeft.current = sliderRef.current.scrollLeft;
+    sliderRef.current.classList.add("cursor-grabbing");
+  };
+
+  const onMouseLeave = () => {
+    isDown.current = false;
+    sliderRef.current.classList.remove("cursor-grabbing");
+  };
+
+  const onMouseUp = () => {
+    isDown.current = false;
+    sliderRef.current.classList.remove("cursor-grabbing");
+  };
+
+  const onMouseMove = (e) => {
+    if (!isDown.current) return;
+
+    e.preventDefault();
+
+    const x = e.pageX - sliderRef.current.offsetLeft;
+    const walk = (x - startX.current) * 1.5;
+
+    sliderRef.current.scrollLeft = scrollLeft.current - walk;
+    updateArrows();
+  };
+
+  const onScroll = () => updateArrows();
 
   return (
-    <div className="border-b border-neutral-800 pb-4">
+    <div className="border-b border-neutral-800 pb-10">
+
+      {/* Title */}
       <motion.h1
+        className="my-16 text-4xl text-center"
+        initial={{ opacity: 0, y: -80 }}
         whileInView={{ opacity: 1, y: 0 }}
-        initial={{ opacity: 0, y: -100 }}
-        transition={{ duration: 0.5 }}
-        className="my-20 text-4xl text-center"
       >
         Projects
       </motion.h1>
 
-      <div>
-        {PROJECTS.map((project, index) => (
-          <motion.div
-            key={index}
-            className="mb-8 flex flex-wrap lg:justify-center cursor-pointer"
-            whileInView={{ opacity: 1, y: 0 }}
-            initial={{ opacity: 0, y: 100 }}
-            transition={{ duration: 0.5 }}
-            onClick={() => setSelectedProject(project)}
+      {/* Slider wrapper */}
+      <div className="relative px-4">
+
+        {/* LEFT ARROW */}
+        {showLeft && (
+          <button
+            onClick={() => scroll("left")}
+            className="absolute left-3 top-1/2 -translate-y-1/2 z-20
+            w-12 h-12 flex items-center justify-center
+            bg-white/10 backdrop-blur-lg border border-white/30
+            text-white rounded-full
+            shadow-[0_0_20px_rgba(255,255,255,0.3)]
+            hover:bg-white/20 hover:scale-110 transition"
           >
+            <span className="text-2xl font-bold">‹</span>
+          </button>
+        )}
+
+        {/* RIGHT ARROW */}
+        {showRight && (
+          <button
+            onClick={() => scroll("right")}
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-20
+            w-12 h-12 flex items-center justify-center
+            bg-white/10 backdrop-blur-lg border border-white/30
+            text-white rounded-full
+            shadow-[0_0_20px_rgba(255,255,255,0.3)]
+            hover:bg-white/20 hover:scale-110 transition"
+          >
+            <span className="text-2xl font-bold">›</span>
+          </button>
+        )}
+
+        {/* Slider */}
+        <div
+          ref={sliderRef}
+          onScroll={onScroll}
+          onMouseDown={onMouseDown}
+          onMouseLeave={onMouseLeave}
+          onMouseUp={onMouseUp}
+          onMouseMove={onMouseMove}
+className="flex gap-6 overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory cursor-grab no-scrollbar"
+            >
+          {PROJECTS.map((project, index) => (
             <motion.div
-              className="w-full lg:w-1/4"
+              key={index}
+              onClick={() => setSelectedProject(project)}
+              className="min-w-[300px] max-w-[300px] bg-neutral-900 rounded-xl p-4 snap-center"
               whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.5 }}
             >
-              <motion.img
+              <img
                 src={project.image}
-                width={150}
-                height={150}
                 alt={project.title}
-                className="mb-6 rounded"
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.5 }}
+                className="rounded mb-3 h-[160px] w-full object-cover"
+                draggable={false}
               />
-            </motion.div>
 
-            <motion.div
-              className="w-full max-w-xl lg:w-3/4"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.5 }}
-            >
-              <h6 className="mb-2 font-semibold">{project.title}</h6>
-              <p className="mb-4 text-neutral-400">{project.description}</p>
+              <h3 className="font-semibold mb-2">{project.title}</h3>
 
-              {/* Tech Stack in main page */}
-              <div className="flex flex-wrap">
-                {project.technologies.map((tech, techIndex) => (
+              <p className="text-sm text-neutral-400 line-clamp-3">
+                {project.description}
+              </p>
+
+              <div className="flex flex-wrap mt-3">
+                {project.technologies.slice(0, 3).map((tech, i) => (
                   <span
-                    key={techIndex}
-                    className="mr-2 mb-2 rounded bg-neutral-900 px-2 py-1 text-sm font-medium"
+                    key={i}
+                    className="mr-2 mb-2 text-xs bg-neutral-800 px-2 py-1 rounded"
                   >
                     {tech}
                   </span>
                 ))}
               </div>
             </motion.div>
-          </motion.div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* Modal */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70"
+            className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setSelectedProject(null)} // Close when clicking background
+            onClick={() => setSelectedProject(null)}
           >
             <motion.div
-              className="bg-neutral-900 p-6 rounded-lg max-w-lg w-full relative max-h-[80vh] overflow-y-auto"
+              className="bg-neutral-900 p-6 rounded-lg max-w-lg w-full"
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
-              onClick={(e) => e.stopPropagation()} // Prevent background click from closing when clicking inside modal
+              onClick={(e) => e.stopPropagation()}
             >
-              <button
-                className="absolute top-2 right-2 text-white text-xl font-bold"
-                onClick={() => setSelectedProject(null)}
-              >
-                &times;
-              </button>
-
               <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
-                className="mb-4 rounded"
+                className="rounded mb-4 w-full max-h-[500px] object-contain"
               />
 
-              <h3 className="text-2xl font-semibold mb-2">{selectedProject.title}</h3>
-              <p className="mb-4 text-neutral-400">{selectedProject.description}</p>
+              <h2 className="text-xl font-bold mb-2">
+                {selectedProject.title}
+              </h2>
 
-              {/* Tech Stack in modal */}
-              <div className="mb-4">
-                <h4 className="font-semibold mb-2">Tech Stack:</h4>
-                <div className="flex flex-wrap">
-                  {selectedProject.technologies.map((tech, index) => (
-                    <span
-                      key={index}
-                      className="mr-2 mb-2 rounded bg-neutral-800 px-2 py-1 text-sm font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              <p className="text-neutral-400 mb-4">
+                {selectedProject.description}
+              </p>
 
-              {/* Dynamic Link */}
-              {selectedProject.github && selectedProject.technologies.includes("Figma") ? (
-                <a
-                  href={selectedProject.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded"
-                >
-                  View on Figma
-                </a>
-              ) : selectedProject.github ? (
-                <a
-                  href={selectedProject.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
-                >
-                  View on GitHub
-                </a>
-              ) : null}
+              <a
+                href={selectedProject.github}
+                target="_blank"
+                className="inline-block bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-white"
+              >
+                View Project
+              </a>
             </motion.div>
           </motion.div>
         )}
