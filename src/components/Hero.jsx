@@ -107,6 +107,7 @@ const Hero = () => {
                                 height={160}
                                 className="rounded-full bg-white p-1 block"
                                 style={{ boxShadow }}
+                                onContextMenu={(e) => e.preventDefault()}
                             />
                         </div>
 
