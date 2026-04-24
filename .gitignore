@@ -23,6 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
+
 #images
 src/assets/*image.png
 src/assets/*p.jpeg
