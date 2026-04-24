@@ -24,8 +24,8 @@ dist-ssr
 *.sw?
 
 
-#images
-src/assets/*image.png
-src/assets/*p.jpeg
-src/assets/*profile.png
-src/assets/*profile2.jpg
+# #images
+# src/assets/*image.png
+# src/assets/*p.jpeg
+# src/assets/*profile.png
+# src/assets/*profile2.jpg
