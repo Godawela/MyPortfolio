@@ -89,8 +89,13 @@ const Projects = () => {
       </motion.h1>
 
       {/* Slider wrapper */}
-      <div className="relative px-4">
+<div className="relative px-4 overflow-hidden">
 
+  {/* LEFT FADE */}
+  <div className="pointer-events-none absolute left-0 top-0 h-full w-16 z-10 bg-gradient-to-r from-black to-transparent" />
+
+  {/* RIGHT FADE */}
+  <div className="pointer-events-none absolute right-0 top-0 h-full w-16 z-10 bg-gradient-to-l from-black to-transparent" />
         {/* LEFT ARROW */}
         {showLeft && (
           <button
@@ -123,14 +128,14 @@ const Projects = () => {
 
         {/* Slider */}
         <div
-          ref={sliderRef}
-          onScroll={onScroll}
-          onMouseDown={onMouseDown}
-          onMouseLeave={onMouseLeave}
-          onMouseUp={onMouseUp}
-          onMouseMove={onMouseMove}
-className="flex gap-6 overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory cursor-grab no-scrollbar"
-            >
+  ref={sliderRef}
+  onScroll={onScroll}
+  onMouseDown={onMouseDown}
+  onMouseLeave={onMouseLeave}
+  onMouseUp={onMouseUp}
+  onMouseMove={onMouseMove}
+  className="flex gap-6 overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory cursor-grab no-scrollbar"
+>
           {PROJECTS.map((project, index) => (
             <motion.div
               key={index}
