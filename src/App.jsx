@@ -1,5 +1,6 @@
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Experience from "./components/Experience";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
@@ -8,80 +9,175 @@ import "./App.css";
 
 export default function App() {
     return (
-        <div className="overflow-x-hidden text-neutral-300 antialiased selection:bg-cyan-300 selection:text-cyan-900">
-            <div className="shooting-star"></div>
+        <div className="portfolio">
 
+            {/* ============================================
+                GALAXY BACKGROUND
+            ============================================ */}
 
-            <div className="fixed top-0 -z-10 h-full w-full">
-                <div className="absolute inset-0 -z-10 h-full w-full">
-                    {/* Floating Stars (two layers) */}
-                    <div className="floating-stars">
-                        {/* Background dense stars */}
-                        {Array.from({ length: 350 }).map((_, index) => {
-                            const randomTop = Math.random() * 100;
-                            const randomLeft = Math.random() * 100;
-                            const randomSize = Math.random() * 1.8 + 0.6; // 0.6 - 2.4px
-                            const hue = 200 + Math.random() * 60; // bluish tint
-                            const duration = 4 + Math.random() * 6; // 4s - 10s for subtle twinkle
-                            const delay = Math.random() * -10; // negative to desync
+            <div className="galaxy-background">
 
-                            return (
-                                <div
-                                    key={`bg-${index}`}
-                                    className="star small"
-                                    style={{
-                                        top: `${randomTop}%`,
-                                        left: `${randomLeft}%`,
-                                        width: `${randomSize}px`,
-                                        height: `${randomSize}px`,
-                                        background: `hsl(${hue}deg 80% 90%)`,
-                                        animationDuration: `${duration}s`,
-                                        animationDelay: `${delay}s`,
-                                        opacity: 0.9 - Math.random() * 0.6,
-                                    }}
-                                />
-                            );
-                        })}
+                {/* Nebula */}
+                <div className="nebula nebula-blue"></div>
+                <div className="nebula nebula-purple"></div>
+                <div className="nebula nebula-cyan"></div>
 
-                        {/* Foreground twinkling stars */}
-                        {Array.from({ length: 80 }).map((_, index) => {
-                            const randomTop = Math.random() * 100;
-                            const randomLeft = Math.random() * 100;
-                            const randomSize = Math.random() * 3 + 1.5; // 1.5 - 4.5px
-                            const hue = 30 + Math.random() * 330; // variable color (warm/cool)
-                            const duration = 1.2 + Math.random() * 2; // faster twinkle
-                            const delay = Math.random() * -2;
+                {/* Stars */}
+                <div className="stars-container">
 
-                            return (
-                                <div
-                                    key={`fg-${index}`}
-                                    className="star twinkle"
-                                    style={{
-                                        top: `${randomTop}%`,
-                                        left: `${randomLeft}%`,
-                                        width: `${randomSize}px`,
-                                        height: `${randomSize}px`,
-                                        background: `hsl(${hue}deg 90% 85%)`,
-                                        animationDuration: `${duration}s`,
-                                        animationDelay: `${delay}s`,
-                                        opacity: 0.95,
-                                    }}
-                                />
-                            );
-                        })}
-                    </div>
+                    {/* Tiny stars */}
+                    {Array.from({ length: 500 }).map((_, index) => {
+                        const size = Math.random() * 1.5 + 0.5;
+
+                        return (
+                            <span
+                                key={`tiny-${index}`}
+                                className="star star-tiny"
+                                style={{
+                                    top: `${Math.random() * 100}%`,
+                                    left: `${Math.random() * 100}%`,
+                                    width: `${size}px`,
+                                    height: `${size}px`,
+                                    animationDelay: `${Math.random() * 8}s`,
+                                    animationDuration: `${4 + Math.random() * 6}s`,
+                                }}
+                            />
+                        );
+                    })}
+
+                    {/* Medium stars */}
+                    {Array.from({ length: 120 }).map((_, index) => {
+                        const size = Math.random() * 2 + 1;
+
+                        return (
+                            <span
+                                key={`medium-${index}`}
+                                className="star star-medium"
+                                style={{
+                                    top: `${Math.random() * 100}%`,
+                                    left: `${Math.random() * 100}%`,
+                                    width: `${size}px`,
+                                    height: `${size}px`,
+                                    animationDelay: `${Math.random() * 5}s`,
+                                    animationDuration: `${2 + Math.random() * 4}s`,
+                                }}
+                            />
+                        );
+                    })}
+
+                    {/* Bright stars */}
+                    {Array.from({ length: 40 }).map((_, index) => {
+                        const size = Math.random() * 3 + 2;
+
+                        return (
+                            <span
+                                key={`bright-${index}`}
+                                className="star star-bright"
+                                style={{
+                                    top: `${Math.random() * 100}%`,
+                                    left: `${Math.random() * 100}%`,
+                                    width: `${size}px`,
+                                    height: `${size}px`,
+                                    animationDelay: `${Math.random() * 3}s`,
+                                    animationDuration: `${1.5 + Math.random() * 2}s`,
+                                }}
+                            />
+                        );
+                    })}
+
                 </div>
+
+                {/* Shooting stars */}
+                <div className="shooting-star shooting-one"></div>
+                <div className="shooting-star shooting-two"></div>
+                <div className="shooting-star shooting-three"></div>
+
             </div>
 
-            <div className="container mx-auto px-8">
+            {/* ============================================
+                WEBSITE CONTENT
+            ============================================ */}
+
+            <div className="website-content">
+
                 <Navbar />
-                <Hero />
-                <div id="about"><About /></div>
-<div id="technologies"><Technologies /></div>
-<div id="projects"><Projects /></div>
-<div id="contact"><Contact /></div>
+
+                <main>
+
+                    <section id="home">
+                        <Hero />
+                    </section>
+
+                    <section id="about">
+                        <About />
+                    </section>
+
+                    <section id="experience">
+                        <Experience />
+                    </section>
+
+                    <section id="projects">
+                        <Projects />
+                    </section>
+
+                    <section id="technologies">
+                        <Technologies />
+                    </section>
+
+                    <section id="contact">
+                        <Contact />
+                    </section>
+
+                </main>
+
+                {/* Footer */}
+                <footer className="border-t border-neutral-800/70 py-10">
+
+                    <div className="flex flex-col items-center justify-between gap-4 text-sm text-neutral-500 md:flex-row">
+
+                        <p>
+                            © 2026 Umesha Godawela
+                        </p>
+
+                        <div className="flex gap-6">
+
+                            <a
+                                href="https://github.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="transition hover:text-cyan-400"
+                            >
+                                GitHub
+                            </a>
+
+                            <a
+                                href="https://linkedin.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="transition hover:text-cyan-400"
+                            >
+                                LinkedIn
+                            </a>
+
+                            <a
+                                href="mailto:your-email@gmail.com"
+                                className="transition hover:text-cyan-400"
+                            >
+                                Email
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <p className="mt-5 text-center text-xs text-neutral-700">
+                        Built with React, Tailwind CSS & Framer Motion
+                    </p>
+
+                </footer>
 
             </div>
+
         </div>
     );
 }

@@ -169,3 +169,260 @@ body {
 html, body {
   overflow-x: hidden;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050816;
+}
+
+.stars {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.star {
+    position: absolute;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.8);
+    animation: twinkle infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%,
+    100% {
+        opacity: 0.15;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: scale(1.3);
+    }
+}
+
+::selection {
+    background: #67e8f9;
+    color: #082f49;
+}
+
+/* =========================================================
+   FINAL PORTFOLIO FIXES
+========================================================= */
+
+/* Keep the galaxy behind everything */
+.galaxy-background {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Website content above galaxy */
+.website-content {
+    position: relative;
+    z-index: 10;
+    color: #d4d4d8;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.website-content nav,
+.website-content nav a {
+    color: #d4d4d8;
+}
+
+.website-content nav a:hover {
+    color: #22d3ee;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+#home {
+    position: relative;
+    min-height: 0vh;
+    display: flex;
+    align-items: center;
+}
+
+#home h1,
+#home h2,
+#home h3 {
+    color: white;
+}
+
+#home p {
+    color: #a1a1aa;
+}
+
+/* Prevent hero content from being cut off */
+#home > div {
+    max-width: 100%;
+}
+
+/* =========================================================
+   HERO BUTTONS
+========================================================= */
+
+#home a {
+    color: inherit;
+}
+
+#home a.bg-cyan-400,
+#home a.bg-cyan-500 {
+    color: #020617;
+}
+
+#home a.border {
+    color: #e5e7eb;
+}
+
+#home a.border:hover {
+    color: #22d3ee;
+}
+
+/* =========================================================
+   HERO CONTENT SPACING
+========================================================= */
+#home > section > div {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+#home > section {
+    width: 100%;
+}
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    #home {
+        min-height: auto;
+        padding-top: 0px;
+        padding-bottom: 80px;
+    }
+
+}
+
+/* =========================================================
+   HERO MARGINS & LAYOUT FIX
+========================================================= */
+
+#home {
+    min-height: calc(70vh - 90px);
+    display: flex;
+    align-items: center;
+    padding-top: 0;
+}
+
+/* Keep hero content centered with proper side margins */
+#home > div {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Hero two-column layout */
+#home .grid {
+    width: 100%;
+    align-items: center;
+}
+
+/* Left side */
+#home .grid > div:first-child {
+    padding-left: 20px;
+}
+
+/* Right side */
+#home .grid > div:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =========================================================
+   LARGE SCREENS
+========================================================= */
+
+@media (min-width: 1280px) {
+
+    #home {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    #home .grid > div:first-child {
+        padding-left: 20px;
+    }
+
+}
+
+/* =========================================================
+   EXTRA LARGE SCREENS
+========================================================= */
+
+@media (min-width: 1536px) {
+
+    #home {
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+    #home > div {
+        max-width: 1450px;
+    }
+
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+    #home {
+        min-height: auto;
+        padding: 130px 30px 80px;
+    }
+
+    #home .grid > div:first-child {
+        padding-left: 0;
+    }
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    #home {
+        min-height: auto;
+        padding: 120px 0px 70px;
+    }
+
+    #home .grid {
+        gap: 60px;
+    }
+
+    #home .grid > div:first-child {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    #home .grid > div:last-child {
+        justify-content: center;
+    }
+
+}
