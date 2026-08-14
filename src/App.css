@@ -1,5 +1,5 @@
 body {
-  background-color: #000;
+  background: #050816;
 }
 
 /* Shooting star */
@@ -23,8 +23,11 @@ body {
   animation: shoot 4s ease-out infinite;
   animation-delay: 4s; /* Wait before first shot */
   opacity: 0;
+}
 
-  .shooting-star:nth-child(1) {
+/* Per-star stagger (moved out of .shooting-star — nesting like this isn't
+   valid plain CSS, so these never applied before) */
+.shooting-star:nth-child(1) {
   animation-duration: 5s;
   animation-delay: 2s;
 }
@@ -38,9 +41,6 @@ body {
   animation-duration: 9s;
   animation-delay: 10s;
 }
-
-}
-
 
 /* Animation for shooting star */
 @keyframes shoot {
@@ -72,32 +72,29 @@ body {
   animation: flameFlicker 0.2s infinite alternate;
 }
 
-
 /* Flame flickering animation */
 @keyframes flameFlicker {
   0% { height: 20px; opacity: 0.6; }
   100% { height: 34px; opacity: 1; }
 }
 
-
 .floating-stars {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw; /* Use viewport width */
-  height: 100vh; /* Use viewport height */
-  overflow: hidden; /* Prevent overflow */
-  z-index: -1; /* Ensure stars stay behind content */
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
   pointer-events: none;
-  /* subtle galaxy gradient to add depth */
   background: radial-gradient(ellipse at 30% 20%, rgba(40, 60, 120, 0.12), transparent 30%),
               radial-gradient(ellipse at 70% 80%, rgba(120, 30, 80, 0.06), transparent 30%);
 }
 
 .star {
   position: absolute;
-  border-radius: 50%;
-  background: #fff; /* default, overridden inline for tint */
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.8);
   transform: translate(-50%, -50%);
   will-change: opacity, transform;
 }
@@ -129,31 +126,36 @@ body {
   100% { opacity: 0.2; transform: translate(-50%, -50%) scale(0.9); }
 }
 
+.stars {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
 /* App.css */
 
 .comet {
-    position: absolute;
-    width: 20px; /* Width of the comet */
-    height: 5px; /* Height of the comet */
-    background: linear-gradient(to right, #ffeb3b, #ff5722); /* Gradient color for the comet */
-    border-radius: 50%; /* Rounded ends */
-    opacity: 0.9; /* Opacity of the comet */
-    transform: translateX(-50%);
-    animation: fly 3s linear forwards;
+  position: absolute;
+  width: 20px;
+  height: 5px;
+  background: linear-gradient(to right, #ffeb3b, #ff5722);
+  border-radius: 50%;
+  opacity: 0.9;
+  transform: translateX(-50%);
+  animation: fly 3s linear forwards;
 }
 
 /* Keyframes for comet animation */
 @keyframes fly {
-    0% {
-        transform: translate(-50%, -50%) translateY(0) translateX(-100vw);
-        opacity: 1; /* Fully visible at start */
-    }
-    100% {
-        transform: translate(-50%, -50%) translateY(50px) translateX(100vw); /* Move down and across */
-        opacity: 0; /* Fade out at the end */
-    }
+  0% {
+    transform: translate(-50%, -50%) translateY(0) translateX(-100vw);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) translateY(50px) translateX(100vw);
+    opacity: 0;
+  }
 }
-
 
 /* Hide scrollbar completely */
 .no-scrollbar::-webkit-scrollbar {
@@ -161,71 +163,42 @@ body {
 }
 
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE/Edge */
-  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* Safety: prevent vertical scrollbar */
+/* Safety: prevent horizontal scrollbar (critical on mobile, where the
+   shooting-star/comet tails and off-screen starting positions can
+   otherwise force overflow) */
 html, body {
   overflow-x: hidden;
+  max-width: 100%;
 }
 
 html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: #050816;
-}
-
-.stars {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-}
-
-.star {
-    position: absolute;
-    border-radius: 9999px;
-    background: rgba(255, 255, 255, 0.8);
-    animation: twinkle infinite ease-in-out;
-}
-
-@keyframes twinkle {
-    0%,
-    100% {
-        opacity: 0.15;
-        transform: scale(0.8);
-    }
-
-    50% {
-        opacity: 0.9;
-        transform: scale(1.3);
-    }
+  scroll-behavior: smooth;
 }
 
 ::selection {
-    background: #67e8f9;
-    color: #082f49;
+  background: #67e8f9;
+  color: #082f49;
 }
 
 /* =========================================================
    FINAL PORTFOLIO FIXES
 ========================================================= */
 
-/* Keep the galaxy behind everything */
 .galaxy-background {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
 }
 
-/* Website content above galaxy */
 .website-content {
-    position: relative;
-    z-index: 10;
-    color: #d4d4d8;
+  position: relative;
+  z-index: 10;
+  color: #d4d4d8;
 }
 
 /* =========================================================
@@ -234,120 +207,87 @@ body {
 
 .website-content nav,
 .website-content nav a {
-    color: #d4d4d8;
+  color: #d4d4d8;
 }
 
 .website-content nav a:hover {
-    color: #22d3ee;
+  color: #22d3ee;
 }
 
 /* =========================================================
    HERO
+   (single source of truth for #home spacing — this used to be set
+   in four separate places across the file, with later mobile rules
+   overriding earlier ones inconsistently, which is what produced
+   the oversized gap under the navbar on small screens)
 ========================================================= */
 
 #home {
-    position: relative;
-    min-height: 0vh;
-    display: flex;
-    align-items: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: auto;
+  width: 100%;
+  padding-top: 0;
 }
 
 #home h1,
 #home h2,
 #home h3 {
-    color: white;
+  color: white;
 }
 
 #home p {
-    color: #a1a1aa;
+  color: #a1a1aa;
 }
 
-/* Prevent hero content from being cut off */
 #home > div {
-    max-width: 100%;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
-
-/* =========================================================
-   HERO BUTTONS
-========================================================= */
 
 #home a {
-    color: inherit;
+  color: inherit;
 }
 
 #home a.bg-cyan-400,
 #home a.bg-cyan-500 {
-    color: #020617;
+  color: #020617;
 }
 
 #home a.border {
-    color: #e5e7eb;
+  color: #e5e7eb;
 }
 
 #home a.border:hover {
-    color: #22d3ee;
-}
-
-/* =========================================================
-   HERO CONTENT SPACING
-========================================================= */
-#home > section > div {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
+  color: #22d3ee;
 }
 
 #home > section {
-    width: 100%;
-}
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 768px) {
-
-    #home {
-        min-height: auto;
-        padding-top: 0px;
-        padding-bottom: 80px;
-    }
-
+  width: 100%;
 }
 
-/* =========================================================
-   HERO MARGINS & LAYOUT FIX
-========================================================= */
-
-#home {
-    min-height: calc(70vh - 90px);
-    display: flex;
-    align-items: center;
-    padding-top: 0;
-}
-
-/* Keep hero content centered with proper side margins */
-#home > div {
-    width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
+#home > section > div {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 /* Hero two-column layout */
 #home .grid {
-    width: 100%;
-    align-items: center;
+  width: 100%;
+  align-items: center;
 }
 
-/* Left side */
 #home .grid > div:first-child {
-    padding-left: 20px;
+  padding-left: 20px;
 }
 
-/* Right side */
 #home .grid > div:last-child {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* =========================================================
@@ -355,16 +295,14 @@ body {
 ========================================================= */
 
 @media (min-width: 1280px) {
+  #home {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 
-    #home {
-        padding-left: 40px;
-        padding-right: 40px;
-    }
-
-    #home .grid > div:first-child {
-        padding-left: 20px;
-    }
-
+  #home .grid > div:first-child {
+    padding-left: 20px;
+  }
 }
 
 /* =========================================================
@@ -372,16 +310,14 @@ body {
 ========================================================= */
 
 @media (min-width: 1536px) {
+  #home {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
 
-    #home {
-        padding-left: 60px;
-        padding-right: 60px;
-    }
-
-    #home > div {
-        max-width: 1450px;
-    }
-
+  #home > div {
+    max-width: 1450px;
+  }
 }
 
 /* =========================================================
@@ -389,16 +325,15 @@ body {
 ========================================================= */
 
 @media (max-width: 1024px) {
+  #home {
+    min-height: auto;
+    /* small clearance under a fixed/sticky navbar, not a full 130px block */
+    padding: 24px 30px 80px;
+  }
 
-    #home {
-        min-height: auto;
-        padding: 130px 30px 80px;
-    }
-
-    #home .grid > div:first-child {
-        padding-left: 0;
-    }
-
+  #home .grid > div:first-child {
+    padding-left: 0;
+  }
 }
 
 /* =========================================================
@@ -406,23 +341,105 @@ body {
 ========================================================= */
 
 @media (max-width: 768px) {
+  #home {
+    min-height: auto;
+    padding: 16px 16px 70px;
+  }
 
-    #home {
-        min-height: auto;
-        padding: 120px 0px 70px;
-    }
+  #home .grid {
+    gap: 40px;
+  }
 
-    #home .grid {
-        gap: 60px;
-    }
+  #home .grid > div:first-child {
+    padding-left: 0;
+    text-align: center;
+  }
 
-    #home .grid > div:first-child {
-        padding-left: 0;
-        text-align: center;
-    }
+  #home .grid > div:last-child {
+    justify-content: center;
+  }
 
-    #home .grid > div:last-child {
-        justify-content: center;
-    }
+  /* Scale decorative animation elements down so they read as accents
+     rather than dominating a narrow viewport, and can't push width
+     past 100vw */
+  .shooting-star {
+    width: 2px;
+    height: 2px;
+    box-shadow:
+      0 0 6px 3px rgba(255, 255, 255, 0.9),
+      -70px 0 3px 1px rgba(255, 255, 255, 0.5),
+      -120px 0 4px 1px rgba(255, 255, 255, 0.25);
+  }
 
+  .comet {
+    width: 14px;
+    height: 4px;
+  }
+
+  .rocket {
+    width: 10px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  #home {
+    padding: 12px 12px 60px;
+  }
+
+  #home .grid {
+    gap: 28px;
+  }
+
+  /* On very small screens, trim the shooting-star tail further and
+     drop the rocket flame's blur radius (cheap on low-end GPUs) */
+  .shooting-star {
+    box-shadow:
+      0 0 5px 2px rgba(255, 255, 255, 0.9),
+      -50px 0 2px 1px rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* =========================================================
+   GLOBAL PAGE SIDE PADDING
+   Hero (#home) and Projects (#projects) already manage their
+   own responsive side padding internally, so they're excluded
+   here to avoid doubling up. Everything else (navbar, footer,
+   and any section without its own padding) gets consistent
+   left/right breathing room so nothing sits flush against the
+   viewport edge.
+========================================================= */
+
+.website-content > nav,
+.website-content main > section:not(#home):not(#projects),
+.website-content footer {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 640px) {
+  .website-content > nav,
+  .website-content main > section:not(#home):not(#projects),
+  .website-content footer {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .website-content > nav,
+  .website-content main > section:not(#home):not(#projects),
+  .website-content footer {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .website-content > nav,
+  .website-content main > section:not(#home):not(#projects),
+  .website-content footer {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
 }
