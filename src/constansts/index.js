@@ -125,7 +125,7 @@ export const PROJECTS = [
         image: project11,
         description:
           "An app for medical professional to learn.",
-          technologies: ["Flutter", "NodeJS","SQL Server","Android and iOS Application"],
+          technologies: ["Flutter", "NodeJS","SQL Server","Android Application"],
           github: "https://github.com/Godawela/MedFlow-final"
         },
 
@@ -170,7 +170,7 @@ export const PROJECTS = [
         image: project17,
         description:
           "An app for scanning and generating QR codes.",
-          technologies: ["Flutter", "CSS", "Android and iOS Application"],
+          technologies: ["Flutter", "CSS", "Android Application"],
           github: "https://github.com/Godawela/qrApp"
         },
 
@@ -179,7 +179,7 @@ export const PROJECTS = [
         image: project19,
         description:
           "An app for assisting users in finding parking spaces.",
-          technologies: ["Flutter", "CSS", "Android and iOS Application"],
+          technologies: ["Flutter", "CSS", "Android Application"],
           github: "https://github.com/Godawela/parking_assistence_app.git"
         },
 
