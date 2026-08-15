@@ -65,7 +65,7 @@ const About = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className="w-full lg:w-3/5"
+                    className="w-full rounded-3xl border border-neutral-800/60 bg-neutral-900/30 p-6 backdrop-blur-md sm:p-10 lg:w-3/5 lg:bg-neutral-900/20 lg:p-12"
                 >
 
                     <p className="mb-8 text-lg leading-8 text-neutral-400">
@@ -96,7 +96,7 @@ const About = () => {
                                     duration: 0.4,
                                     delay: index * 0.1,
                                 }}
-                                className="rounded-xl border border-neutral-800 bg-neutral-900/40 p-5 transition hover:border-cyan-500/40 hover:bg-neutral-900/70"
+                                className="rounded-xl border border-neutral-800 bg-neutral-900/50 p-5 backdrop-blur-sm transition hover:border-cyan-500/40 hover:bg-neutral-900/80"
                             >
                                 <h3 className="mb-2 text-sm font-medium uppercase tracking-wider text-cyan-400">
                                     {card.title}
