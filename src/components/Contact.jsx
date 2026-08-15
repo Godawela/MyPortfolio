@@ -50,7 +50,7 @@ const Contact = () => {
         </motion.div>
 
         {/* BENTO GRID */}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-2">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:grid-rows-3">
 
           {/* EMAIL — hero card, spans full height on the left */}
           <motion.a
@@ -67,7 +67,7 @@ const Contact = () => {
                 window.location.href = "mailto:umeshagodawela@gmail.com";
               }, 200);
             }}
-            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-neutral-800 bg-gradient-to-br from-cyan-500/10 via-neutral-900 to-purple-500/10 p-7 md:row-span-2"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-neutral-800 bg-gradient-to-br from-cyan-500/10 via-neutral-900 to-purple-500/10 p-7 md:row-span-3"
           >
             {/* ambient glow */}
             <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-cyan-400/10 blur-3xl transition-opacity group-hover:opacity-80" />
@@ -129,6 +129,31 @@ const Contact = () => {
             </svg>
             <div className="min-w-0">
               <div className="text-sm font-medium text-neutral-100">GitHub</div>
+              <div className="truncate text-xs text-neutral-500">@Godawela</div>
+            </div>
+          </motion.a>
+
+          {/* FIGMA */}
+          <motion.a
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.12 }}
+            whileHover={{ y: -3 }}
+            href="https://www.figma.com/files/team/1563831488108268084/user/1263152246068557487?fuid=1263152246068557487"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-4 rounded-2xl border border-neutral-800 bg-neutral-900/60 p-5 transition-colors hover:border-neutral-700 md:col-span-2"
+          >
+            <svg className="h-6 w-7 shrink-0" viewBox="0 0 38 57" fill="none">
+              <path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z" fill="#1ABCFE" />
+              <path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0z" fill="#0ACF83" />
+              <path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19z" fill="#FF7262" />
+              <path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z" fill="#F24E1E" />
+              <path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z" fill="#A259FF" />
+            </svg>
+            <div className="min-w-0">
+              <div className="text-sm font-medium text-neutral-100">Figma</div>
               <div className="truncate text-xs text-neutral-500">@Godawela</div>
             </div>
           </motion.a>

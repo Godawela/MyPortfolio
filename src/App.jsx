@@ -166,6 +166,16 @@ export default function App() {
                                 Email
                             </a>
 
+                             <a
+                                href="https://www.figma.com/files/team/1563831488108268084/user/1263152246068557487?fuid=1263152246068557487"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="transition hover:text-cyan-400"
+                            >
+                                Figma
+                            </a>
+
+
                         </div>
 
                     </div>
