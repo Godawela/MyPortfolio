@@ -14,21 +14,21 @@ const Hero = () => {
                         initial={{ opacity: 0, x: -60 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.7 }}
-                        className="w-full lg:w-3/5"
+                        className="w-full rounded-3xl border border-neutral-800/60 bg-neutral-900/30 p-6 backdrop-blur-md sm:p-10 lg:w-3/5 lg:bg-neutral-900/20 lg:p-12"
                     >
 
                         <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-cyan-400">
                             Full-Stack & Mobile Developer
                         </p>
 
-                        <h1 className="text-5xl font-light tracking-tight sm:text-6xl lg:text-7xl">
+                        <h1 className="break-words text-4xl font-light tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
                             Hi, I'm{" "}
                             <span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-500 bg-clip-text text-transparent">
                                 Umesha
                             </span>
                         </h1>
 
-                        <h2 className="mt-4 text-3xl font-light text-neutral-400 sm:text-4xl">
+                        <h2 className="mt-4 break-words text-2xl font-light text-neutral-400 sm:text-3xl md:text-4xl">
                             I build digital experiences
                             <span className="text-neutral-200"> that solve real problems.</span>
                         </h2>
@@ -152,7 +152,7 @@ const Hero = () => {
                                     repeat: Infinity,
                                     ease: "easeInOut",
                                 }}
-                                className="absolute -bottom-5 -left-8 rounded-xl border border-neutral-800 bg-neutral-900/90 px-5 py-3 shadow-xl backdrop-blur-md"
+                                className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-xl border border-neutral-800 bg-neutral-900/90 px-4 py-2.5 shadow-xl backdrop-blur-md sm:-bottom-5 sm:left-auto sm:-right-4 sm:translate-x-0 sm:px-5 sm:py-3 lg:-left-8 lg:right-auto"
                             >
                                 <p className="text-xs text-neutral-500">
                                     Currently building

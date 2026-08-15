@@ -175,6 +175,14 @@ html, body {
   max-width: 100%;
 }
 
+/* Defense-in-depth: even if a flex/motion wrapper ends up sized to its
+   content instead of the viewport, long headings still wrap instead
+   of running off-screen and getting silently clipped */
+h1, h2, h3, p {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -199,6 +207,26 @@ html {
   position: relative;
   z-index: 10;
   color: #d4d4d8;
+}
+
+/* Subtle shadow behind all text so it stays legible even when a
+   star/glow happens to sit right behind a letter, without having
+   to dim or remove the star field itself */
+.website-content h1,
+.website-content h2,
+.website-content h3,
+.website-content h4,
+.website-content p,
+.website-content span,
+.website-content a,
+.website-content li {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+}
+
+/* Tone the star glow down slightly so it reads as ambient sparkle
+   rather than competing with foreground text */
+.star.twinkle {
+  box-shadow: 0 0 4px rgba(255,255,255,0.8), 0 0 7px rgba(255,255,255,0.45);
 }
 
 /* =========================================================
